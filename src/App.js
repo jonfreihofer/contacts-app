@@ -1,11 +1,16 @@
 import './App.css';
 import React from "react";
-import SubmitForm from "./Components/SubmitForm"
+import SubmitForm from "./Components/SubmitForm/index"
+import TitleContainer from "./Containers/TitleSection";
 
 function App() {
   return (
-    <>
-      <SubmitForm />
+    <>  
+      <TitleContainer>
+        <h1>Contacts</h1>
+        <SubmitForm />
+      </TitleContainer>
+      
     </>
   );
 }
