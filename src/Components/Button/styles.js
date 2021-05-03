@@ -3,7 +3,8 @@ import styled from 'styled-components'
 const StyledButton = styled.button`
     border: unset;
     padding: 10px 15px;
-    border-radius: 8%;
+    border: unset;
+    border-radius: 5%;
     font-weight: bolder;
     max-width: auto;
     background-color: purple;
