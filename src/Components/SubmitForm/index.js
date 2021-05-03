@@ -19,7 +19,7 @@ function SubmitForm({ children }) {
   function handleSubmit(e) {
     e.preventDefault();
     if (inputData.firstName === "" || inputData.lastName === "") {
-      alert("Please Enter A Contact");
+      alert("Please Enter A First and Last Name");
       return;
     }
     //pushes contact data into contacts array
