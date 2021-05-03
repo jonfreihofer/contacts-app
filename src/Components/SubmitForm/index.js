@@ -18,6 +18,10 @@ function SubmitForm({ children }) {
 
   function handleSubmit(e) {
     e.preventDefault();
+    if (inputData.firstName === "" || inputData.lastName === "") {
+      alert("Please Enter A Contact");
+      return;
+    }
     //pushes contact data into contacts array
     setContactsData((prevContacts) => [...prevContacts, inputData]);
     //automatically sorts last name by alphabetical order
