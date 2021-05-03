@@ -24,7 +24,7 @@ function SubmitForm({ children }) {
     }
     //pushes contact data into contacts array
     setContactsData((prevContacts) => [...prevContacts, inputData]);
-    //automatically sorts last name by alphabetical order
+    //sorts last name by alphabetical order
     setContactsData((prevContacts) =>
       prevContacts.sort((a, b) => a.lastName.localeCompare(b.lastName))
     );

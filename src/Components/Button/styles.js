@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 const StyledButton = styled.button`
-  border: unset;
   padding: 10px 15px;
   border: unset;
   border-radius: 5%;
@@ -11,7 +10,7 @@ const StyledButton = styled.button`
   color: white;
   text-transform: uppercase;
   cursor: pointer;
-  transition: background-color 0.5s ease;
+  transition: background-color 1.75s ease;
   -webkit-box-shadow: 1px 1px 2px 3px #ccc;
 
   &:hover {
