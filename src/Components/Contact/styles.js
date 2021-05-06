@@ -3,7 +3,7 @@ import styled from "styled-components";
 const StyledContact = styled.div`
   color: white;
   background-color: #23a6d5;
-  max-width: 40%;
+  max-width: 25%;
   margin: 0.35rem;
   padding: 0.75rem;
   border-radius: 3%;
