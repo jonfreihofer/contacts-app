@@ -5,7 +5,7 @@ const StyledButton = styled.button`
   border: unset;
   border-radius: 5%;
   font-weight: bolder;
-  max-width: auto;
+  max-width: 30%;
   background-color: purple;
   color: white;
   text-transform: uppercase;

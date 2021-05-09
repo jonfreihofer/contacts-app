@@ -18,7 +18,8 @@ function SubmitForm({ children }) {
 
   function handleSubmit(e) {
     e.preventDefault();
-    if (inputData.firstName === "" || inputData.lastName === "") {
+    if (inputData.firstName === "" || inputData.lastName === "")
+    {
       alert("Please Enter A First and Last Name");
       return;
     }
