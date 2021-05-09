@@ -1,21 +1,21 @@
-import styled from 'styled-components'
+import styled from "styled-components";
 
 const StyledButton = styled.button`
-    border: unset;
-    padding: 10px 15px;
-    border: unset;
-    border-radius: 5%;
-    font-weight: bolder;
-    max-width: auto;
-    background-color: purple;
-    color: white;
-    text-transform: uppercase;
-    cursor: pointer;
--webkit-box-shadow: 1px 1px 2px 3px #ccc;  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
+  padding: 10px 15px;
+  border: unset;
+  border-radius: 5%;
+  font-weight: bolder;
+  max-width: auto;
+  background-color: purple;
+  color: white;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background-color 1.75s ease;
+  -webkit-box-shadow: 1px 1px 2px 3px #ccc;
 
-    &hover:{
-
-    }
-`
+  &:hover {
+    background-color: #e73c7e;
+  }
+`;
 
 export default StyledButton;
