@@ -1,9 +1,15 @@
 import styled from "styled-components";
 
+
 const StyledContact = styled.div`
+display: flex;
+flex-direction: column;
+flex-wrap: wrap;
+justify-content: space-between;
+position: relative;
   color: white;
   background-color: #23a6d5;
-  max-width: 25%;
+  width: 35%;
   margin: 0.35rem;
   padding: 0.75rem;
   border-radius: 3%;
