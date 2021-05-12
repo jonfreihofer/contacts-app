@@ -48,3 +48,11 @@ body {
   top: 0px;
   right: 0px;
 }
+.favorite-star::after{
+  position: absolute; /* Positions psuedo element relative to .icon */
+  width: 100%; /* Same dimensions as .icon */
+  height: 100%;
+  content: ""; /* Allows psuedo element to show */
+  background: white; /* The color you want the icon to change to */
+  mix-blend-mode: screen; /* Only apply color on top of white, use screen if icon is black */
+}
