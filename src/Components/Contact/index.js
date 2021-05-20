@@ -8,6 +8,13 @@ function Contact({ firstName, lastName, removeContact, id }) {
   const [showPopUp, setShowPopUp] = useState(false);
   return (
     <>
+      <PopUp
+        showPopUp={showPopUp}
+        setShowPopUp={setShowPopUp}
+        firstName={firstName}
+        removeContact={removeContact}
+        id={id}
+      />
       <StyledContact>
         <h3>
           {firstName} {lastName}
@@ -15,7 +22,6 @@ function Contact({ firstName, lastName, removeContact, id }) {
         <StyledButton onClick={() => setShowPopUp(!showPopUp)}>
           Delete
         </StyledButton>
-        <PopUp showPopUp={showPopUp} />
         <img
           className="favorite-star"
           src={isFavorited ? "../images/filledstar.png" : "../images/star.png"}

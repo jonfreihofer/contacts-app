@@ -48,3 +48,9 @@ body {
   top: 0px;
   right: 0px;
 }
+.popup {
+  display: block;
+}
+.noPopUp {
+  display: none;
+}
