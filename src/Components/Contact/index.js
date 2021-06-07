@@ -1,11 +1,14 @@
 import React, { useState } from "react";
 import StyledContact from "./styles.js";
 import StyledButton from "../Button/styles.js";
+import StyledInput from "../SubmitForm/styles.js";
 import PopUp from "../PopUp";
 
 function Contact({ firstName, lastName, removeContact, id }) {
   const [isFavorited, setIsFavorited] = useState(false);
   const [showPopUp, setShowPopUp] = useState(false);
+  const [edit, setEdit] = useState(false);
+
   return (
     <>
       <PopUp
@@ -16,11 +19,20 @@ function Contact({ firstName, lastName, removeContact, id }) {
         id={id}
       />
       <StyledContact>
-        <h3>
-          {firstName} {lastName}
-        </h3>
-        <StyledButton onClick={() => setShowPopUp(!showPopUp)}>
+        {edit && <StyledInput value={`${firstName} ${lastName}`} />}
+        {!edit && (
+          <h3>
+            {firstName} {lastName}
+          </h3>
+        )}
+        <StyledButton
+          onClick={() => setShowPopUp(!showPopUp)}
+          disabled={showPopUp}
+        >
           Delete
+        </StyledButton>
+        <StyledButton className="edit" onClick={() => setEdit(!edit)}>
+          Edit
         </StyledButton>
         <img
           className="favorite-star"

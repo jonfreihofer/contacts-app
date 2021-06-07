@@ -54,3 +54,11 @@ body {
 .noPopUp {
   display: none;
 }
+
+.edit {
+  margin-right: 12px;
+  margin-bottom: 12px;
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+}
