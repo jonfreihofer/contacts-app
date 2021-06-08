@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Context } from "../Context";
+import { Context } from "../Context.js";
 import Button from "../Button";
 import { StyledForm, StyledInput } from "./styles";
 
