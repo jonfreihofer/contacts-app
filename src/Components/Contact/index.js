@@ -21,6 +21,7 @@ function Contact({ firstName, lastName, removeContact, id }) {
       <StyledContact>
         {edit && <StyledInput value={`${firstName} ${lastName}`} />}
         {!edit && (
+          //todo: create context for input/onChange/value handling
           <h3>
             {firstName} {lastName}
           </h3>
@@ -29,7 +30,7 @@ function Contact({ firstName, lastName, removeContact, id }) {
           onClick={() => setShowPopUp(!showPopUp)}
           disabled={showPopUp}
         >
-          Delete
+          Remove
         </StyledButton>
         <StyledButton className="edit" onClick={() => setEdit(!edit)}>
           Edit
