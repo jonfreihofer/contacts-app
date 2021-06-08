@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Context } from "src/Contacts/index.js";
+import { Context } from "../Context";
 import Button from "../Button";
 import { StyledForm, StyledInput } from "./styles";
 

@@ -71,4 +71,4 @@ function ContextProvider({ children }) {
   );
 }
 
-export { ContextProvider, Context };
+export { Context, ContextProvider };
