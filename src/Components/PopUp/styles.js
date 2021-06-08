@@ -25,6 +25,7 @@ const StyledPopUp = styled.div`
     color: white;
     border: none;
     margin: 3px;
+    margin-bottom: 25px;
     -webkit-box-shadow: 3px 3px 5px 6px #ccc;
     -moz-box-shadow: 3px 3px 5px 6px #ccc;
     box-shadow: 3px 3px 5px 6px #ccc;
