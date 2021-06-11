@@ -55,16 +55,16 @@ function ContextProvider({ children }) {
   ));
   return (
     <Context.Provider
-      value={
-        (inputData,
+      value={{
+        inputData,
         setInputData,
         contactsData,
         setContactsData,
         handleSubmit,
         handleChange,
         removeContact,
-        contacts)
-      }
+        contacts,
+      }}
     >
       {children}
     </Context.Provider>
