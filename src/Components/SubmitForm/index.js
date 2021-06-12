@@ -8,6 +8,7 @@ function SubmitForm({ children }) {
     id: 0,
     firstName: "",
     lastName: "",
+    editName: "",
   });
   const [contactsData, setContactsData] = useState([]);
 
@@ -45,6 +46,7 @@ function SubmitForm({ children }) {
     <Contact
       key={contact.firstName + contact.lastName}
       handleChange={handleChange}
+      inputData={inputData}
       firstName={contact.firstName}
       lastName={contact.lastName}
       id={contact.id}
