@@ -1,10 +1,20 @@
 import React, { useState } from "react";
 import StyledContact from "./styles.js";
 import StyledButton from "../Button/styles.js";
-import StyledInput from "../SubmitForm/styles.js";
+import EditForm from "../EditForm";
 import PopUp from "../PopUp";
 
-function Contact({ firstName, lastName, removeContact, id }) {
+function Contact({
+  firstName,
+  lastName,
+  removeContact,
+  id,
+  contactsData,
+  setContactsData,
+  handleChange,
+  inputData,
+  handleSubmit,
+}) {
   const [isFavorited, setIsFavorited] = useState(false);
   const [showPopUp, setShowPopUp] = useState(false);
   const [edit, setEdit] = useState(false);
@@ -19,7 +29,15 @@ function Contact({ firstName, lastName, removeContact, id }) {
         id={id}
       />
       <StyledContact>
-        {edit && <StyledInput value={`${firstName} ${lastName}`} />}
+        {edit && (
+          <EditForm
+            inputData={inputData}
+            handleChange={handleChange}
+            id={id}
+            contactsData={contactsData}
+            setContactsData={setContactsData}
+          />
+        )}
         {!edit && (
           //todo: create context for input/onChange/value handling
           <h3>

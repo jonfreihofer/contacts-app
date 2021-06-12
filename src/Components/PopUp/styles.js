@@ -1,5 +1,5 @@
 import styled from "styled-components";
-
+//todo: fix button issue when short names are entered
 const StyledPopUp = styled.div`
   margin: 0 auto;
   width: 500px;
