@@ -1,30 +1,32 @@
-import React from "react";
+import React, { useContext } from "react";
 import { StyledInput } from "../SubmitForm/styles.js";
-import Button from "../Button";
+import { Context } from "../Context";
 
-export default function EditForm({
-  handleChange,
-  inputData,
-  id,
-  firstName,
-  lastName,
-  editName,
-  contactsData,
-  setContactsData,
-}) {
-  const editSubmit = (id, e) => {
+export default function EditForm() {
+  const { setContactsData, handleChange, inputData, id } = useContext(Context);
+
+  const editContact = (id, e) => {
     e.preventDefault();
+    setContactsData((prevContact) =>
+      prevContact.reduce((acc, contact) => {
+        acc.push(contact);
+        if (contact.id === id) {
+          contact.firstName = contact.editName;
+          acc.push(contact);
+        }
+        return acc;
+      }, [])
+    );
   };
-
   return (
-    <form onSubmit={editSubmit}>
+    <form onSubmit={() => editContact(id)}>
       <StyledInput
         name="editName"
-        placeHolder={`${id.firstName} ${id.lastName}`}
+        placeHolder={`${inputData.firstName} ${inputData.lastName}`}
         value={inputData.editName}
         onChange={handleChange}
       />
-      <Button>Save</Button>
+      <button>submit</button>
     </form>
   );
 }
