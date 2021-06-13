@@ -21,7 +21,7 @@ function Contact({
     setContactsData((prevContact) =>
       prevContact.filter((contact) =>
         contact.id === id
-          ? (contact.editName += inputRef.current.value)
+          ? (contact.editName = inputRef.current.value)
           : contact
       )
     );
@@ -35,7 +35,7 @@ function Contact({
       <div>
         <input
           type="text"
-          defaultValue={`${firstName} ${lastName}`}
+          defaultValue={editName ? editName : `${firstName} ${lastName}`}
           name="editName"
           onChange={handleChange}
           ref={inputRef}
