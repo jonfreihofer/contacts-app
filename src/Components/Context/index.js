@@ -13,12 +13,12 @@ function ContextProvider({ children }) {
   });
   const [contactsData, setContactsData] = useState([]);
 
-  function handleChange(e) {
+  const handleChange = (e) => {
     const { name, value } = e.target;
     setInputData((prevInputData) => ({ ...prevInputData, [name]: value }));
-  }
+  };
 
-  function handleSubmit(e) {
+  const handleSubmit = (e) => {
     e.preventDefault();
     if (!inputData.firstName || !inputData.lastName) {
       alert("Please Enter A First and Last Name");
@@ -36,13 +36,13 @@ function ContextProvider({ children }) {
       lastName: "",
       editName: "",
     }));
-  }
+  };
 
-  function removeContact(id) {
+  const removeContact = (id) => {
     setContactsData((prevContact) =>
       prevContact.filter((contact) => contact.id !== id)
     );
-  }
+  };
 
   const contacts = contactsData.map((contact) => (
     <Contact
