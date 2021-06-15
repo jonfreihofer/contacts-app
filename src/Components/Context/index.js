@@ -1,13 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import Contact from "../Contact";
 
 const Context = React.createContext();
 
 function ContextProvider({ children }) {
+  const inputRef = useRef(null);
   const [inputData, setInputData] = useState({
     id: 0,
     firstName: "",
     lastName: "",
+    editName: "",
   });
   const [contactsData, setContactsData] = useState([]);
 
@@ -32,6 +34,7 @@ function ContextProvider({ children }) {
       id: prevInputData.id + 1,
       firstName: "",
       lastName: "",
+      editName: "",
     }));
   }
 
@@ -47,12 +50,14 @@ function ContextProvider({ children }) {
       handleChange={handleChange}
       firstName={contact.firstName}
       lastName={contact.lastName}
+      editName={contact.editName}
       id={contact.id}
       removeContact={removeContact}
     >
       {children}
     </Contact>
   ));
+
   return (
     <Context.Provider
       value={{
@@ -64,6 +69,7 @@ function ContextProvider({ children }) {
         handleChange,
         removeContact,
         contacts,
+        inputRef,
       }}
     >
       {children}

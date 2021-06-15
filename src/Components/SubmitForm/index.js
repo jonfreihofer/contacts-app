@@ -1,60 +1,11 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
 import Button from "../Button";
-import Contact from "../Contact";
+import { Context } from "../Context";
 import { StyledForm, StyledInput } from "./styles";
 
 function SubmitForm({ children }) {
-  const [inputData, setInputData] = useState({
-    id: 0,
-    firstName: "",
-    lastName: "",
-    editName: "",
-  });
-  const [contactsData, setContactsData] = useState([]);
+  const { handleSubmit, handleChange, inputData } = useContext(Context);
 
-  function handleChange(e) {
-    const { name, value } = e.target;
-    setInputData((prevInputData) => ({ ...prevInputData, [name]: value }));
-  }
-
-  function handleSubmit(e) {
-    e.preventDefault();
-    if (!inputData.firstName || !inputData.lastName) {
-      alert("Please Enter A First and Last Name");
-      return;
-    }
-    //pushes contact data into contacts array
-    setContactsData((prevContacts) => [...prevContacts, inputData]);
-    //sorts last name by alphabetical order
-    setContactsData((prevContacts) =>
-      prevContacts.sort((a, b) => a.lastName.localeCompare(b.lastName))
-    );
-    setInputData((prevInputData) => ({
-      id: prevInputData.id + 1,
-      firstName: "",
-      lastName: "",
-    }));
-  }
-
-  function removeContact(id) {
-    setContactsData((prevContact) =>
-      prevContact.filter((contact) => contact.id !== id)
-    );
-  }
-
-  const contacts = contactsData.map((contact) => (
-    <Contact
-      key={contact.firstName + contact.lastName}
-      handleChange={handleChange}
-      inputData={inputData}
-      firstName={contact.firstName}
-      lastName={contact.lastName}
-      id={contact.id}
-      removeContact={removeContact}
-    >
-      {children}
-    </Contact>
-  ));
   return (
     <StyledForm>
       <form onSubmit={handleSubmit}>
@@ -75,7 +26,6 @@ function SubmitForm({ children }) {
         />
         <Button>Add Contact</Button>
       </form>
-      {contacts}
     </StyledForm>
   );
 }

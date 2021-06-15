@@ -1,30 +1,86 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import StyledContact from "./styles.js";
 import StyledButton from "../Button/styles.js";
 import StyledInput from "../SubmitForm/styles.js";
 import PopUp from "../PopUp";
+import { Context } from "../Context";
 
-function Contact({ firstName, lastName, removeContact, id }) {
+function Contact({
+  firstName,
+  lastName,
+  editName,
+  removeContact,
+  handleSubmit,
+  id,
+}) {
   const [isFavorited, setIsFavorited] = useState(false);
   const [showPopUp, setShowPopUp] = useState(false);
   const [edit, setEdit] = useState(false);
+  const { inputRef, setContactsData, setInputData, handleChange } =
+    useContext(Context);
 
+  const upDateValue = (id) => {
+    setContactsData((prevContact) =>
+      prevContact.filter((contact) =>
+        contact.id === id
+          ? (contact.editName = inputRef.current.value)
+          : contact
+      )
+    );
+    setContactsData((prevContact) =>
+      prevContact.sort((a, b) => a.lastName.localeCompare(b.lastName))
+    );
+
+    setInputData((prevInputData) => ({
+      id: prevInputData.id,
+      firstName: "",
+      lastName: "",
+      editName: "",
+    }));
+    // todo: change editName to replace both firstName and lastName values, for purpose of data continuity
+    setEdit(false);
+  };
+
+  const renderInput = () => {
+    return (
+      <div>
+        <StyledInput
+          type="text"
+          defaultValue={editName ? editName : `${firstName} ${lastName}`}
+          name="editName"
+          onChange={handleChange}
+          ref={inputRef}
+        />
+        <StyledButton className="edit" onClick={() => upDateValue(id)}>
+          Save
+        </StyledButton>
+      </div>
+    );
+  };
+
+  const changeEditMode = () => {
+    setEdit(!edit);
+  };
+
+  const renderData = () => {
+    return <div>{editName ? `${editName}` : `${firstName} ${lastName}`}</div>;
+  };
   return (
     <>
       <PopUp
         showPopUp={showPopUp}
         setShowPopUp={setShowPopUp}
         firstName={firstName}
+        lastName={lastName}
+        editName={editName}
         removeContact={removeContact}
         id={id}
       />
       <StyledContact>
-        {edit && <StyledInput value={`${firstName} ${lastName}`} />}
-        {!edit && (
-          //todo: create context for input/onChange/value handling
-          <h3>
-            {firstName} {lastName}
-          </h3>
+        {edit ? (
+          renderInput()
+        ) : (
+          <h3 onDoubleClick={changeEditMode}>{renderData()}</h3>
         )}
         <StyledButton
           onClick={() => setShowPopUp(!showPopUp)}
@@ -32,9 +88,7 @@ function Contact({ firstName, lastName, removeContact, id }) {
         >
           Remove
         </StyledButton>
-        <StyledButton className="edit" onClick={() => setEdit(!edit)}>
-          Edit
-        </StyledButton>
+
         <img
           className="favorite-star"
           src={isFavorited ? "../images/filledstar.png" : "../images/star.png"}
