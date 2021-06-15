@@ -1,6 +1,7 @@
 import React, { useState, useContext } from "react";
 import StyledContact from "./styles.js";
 import StyledButton from "../Button/styles.js";
+import StyledInput from "../SubmitForm/styles.js";
 import PopUp from "../PopUp";
 import { Context } from "../Context";
 
@@ -19,25 +20,23 @@ function Contact({
     useContext(Context);
 
   const upDateValue = (id) => {
-    const split = inputRef.current.value.split(" ");
-    setContactsData((prevContact) =>
-      prevContact.sort((a, b) => a.lastName.localeCompare(b.lastName))
-    );
     setContactsData((prevContact) =>
       prevContact.filter((contact) =>
         contact.id === id
-          ? ((contact.firstName = split[0]), (contact.lastName = split[1]))
+          ? (contact.editName = inputRef.current.value)
           : contact
       )
     );
-    console.log(lastName);
+    setContactsData((prevContact) =>
+      prevContact.sort((a, b) => a.lastName.localeCompare(b.lastName))
+    );
+
     setInputData((prevInputData) => ({
       id: prevInputData.id,
       firstName: "",
       lastName: "",
       editName: "",
     }));
-
     // todo: change editName to replace both firstName and lastName values, for purpose of data continuity
     setEdit(false);
   };
@@ -45,7 +44,7 @@ function Contact({
   const renderInput = () => {
     return (
       <div>
-        <input
+        <StyledInput
           type="text"
           defaultValue={editName ? editName : `${firstName} ${lastName}`}
           name="editName"
@@ -53,8 +52,7 @@ function Contact({
           ref={inputRef}
         />
         <StyledButton className="edit" onClick={() => upDateValue(id)}>
-          {" "}
-          Save{" "}
+          Save
         </StyledButton>
       </div>
     );
@@ -74,6 +72,7 @@ function Contact({
         setShowPopUp={setShowPopUp}
         firstName={firstName}
         lastName={lastName}
+        editName={editName}
         removeContact={removeContact}
         id={id}
       />
