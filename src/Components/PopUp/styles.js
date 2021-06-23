@@ -8,15 +8,41 @@ const StyledPopUp = styled.div`
   -webkit-box-shadow: 3px 3px 5px 6px #ccc;
   -moz-box-shadow: 3px 3px 5px 6px #ccc;
   box-shadow: 3px 3px 5px 6px #ccc;
-  display: ${({ showPopUp }) => (showPopUp ? "flex" : "none")};
+  display: ${({ showPopUp }) => (showPopUp ? "in-line block" : "none")};
   flex-direction: column;
+  justify-content: space-between;
   align-content: center;
 
   h3 {
-    padding: 4rem;
+    padding: 1px;
     text-align: center;
   }
+
+  .popup-buttons {
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    border: solid pink 1px;
+  }
+
+  .no {
+    margin: 8px;
+    width: 20px;
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+  }
+  .yes {
+    margin: 8px;
+    width: 20px;
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+  }
+
   button {
+    max-width: 35px;
     height: 40px;
     background-color: purple;
     font-weight: bolder;

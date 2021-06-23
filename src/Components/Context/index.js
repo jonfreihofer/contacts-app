@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import Contact from "../Contact";
 
 const Context = React.createContext();
@@ -12,6 +12,15 @@ function ContextProvider({ children }) {
     editName: "",
   });
   const [contactsData, setContactsData] = useState([]);
+
+  useEffect(() => {
+    const getUsers = async () => {
+      let users = await fetch("https://jsonplaceholder.typicode.com/users");
+      let userData = await users.json();
+      setContactsData(userData);
+    };
+    getUsers();
+  }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -27,9 +36,9 @@ function ContextProvider({ children }) {
     //pushes contact data into contacts array
     setContactsData((prevContacts) => [...prevContacts, inputData]);
     //sorts last name by alphabetical order
-    setContactsData((prevContacts) =>
-      prevContacts.sort((a, b) => a.lastName.localeCompare(b.lastName))
-    );
+    // setContactsData((prevContacts) =>
+    //   prevContacts.sort((a, b) => a.lastName.localeCompare(b.lastName))
+    // );
     setInputData((prevInputData) => ({
       id: prevInputData.id + 1,
       firstName: "",
@@ -46,11 +55,11 @@ function ContextProvider({ children }) {
 
   const contacts = contactsData.map((contact) => (
     <Contact
-      key={contact.firstName + contact.lastName}
+      key={contact.lastName}
       handleChange={handleChange}
       firstName={contact.firstName}
-      lastName={contact.lastName}
-      editName={contact.editName}
+      editName={contact.name}
+      email={contact.email}
       id={contact.id}
       removeContact={removeContact}
     >
