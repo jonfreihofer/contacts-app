@@ -11,6 +11,7 @@ function Contact({
   editName,
   removeContact,
   handleSubmit,
+  email,
   id,
 }) {
   const [isFavorited, setIsFavorited] = useState(false);
@@ -27,9 +28,9 @@ function Contact({
           : contact
       )
     );
-    setContactsData((prevContact) =>
-      prevContact.sort((a, b) => a.lastName.localeCompare(b.lastName))
-    );
+    // setContactsData((prevContact) =>
+    //   prevContact.sort((a, b) => a.lastName.localeCompare(b.lastName))
+    // );
 
     setInputData((prevInputData) => ({
       id: prevInputData.id,
@@ -63,7 +64,12 @@ function Contact({
   };
 
   const renderData = () => {
-    return <div>{editName ? `${editName}` : `${firstName} ${lastName}`}</div>;
+    return (
+      <div>
+        {editName ? `${editName}` : `${firstName} ${lastName}`} <br />
+        {email && `${email}`}
+      </div>
+    );
   };
   return (
     <>

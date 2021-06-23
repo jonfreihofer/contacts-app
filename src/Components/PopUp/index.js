@@ -17,8 +17,14 @@ function PopUp({
     <>
       <StyledPopUp showPopUp={showPopUp}>
         <h3> Remove {renderName()} from Contacts?</h3>
-        <button onClick={() => setShowPopUp(!showPopUp)}>No</button>
-        <button onClick={() => removeContact(id)}>Yes</button>
+        <div className="popup-buttons">
+          <button className="no" onClick={() => setShowPopUp(!showPopUp)}>
+            No
+          </button>
+          <button className="yes" onClick={() => removeContact(id)}>
+            Yes
+          </button>
+        </div>
       </StyledPopUp>
     </>
   );
