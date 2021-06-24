@@ -1,11 +1,12 @@
 import styled from "styled-components";
 
 const StyledButton = styled.button`
+  display: block;
   padding: 10px 15px;
   border: unset;
   border-radius: 5%;
   font-weight: bolder;
-  min-width: 45px;
+  min-width: 75px;
   max-width: 35%;
   background-color: purple;
   color: white;
