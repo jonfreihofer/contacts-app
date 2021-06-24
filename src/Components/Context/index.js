@@ -7,9 +7,8 @@ function ContextProvider({ children }) {
   const inputRef = useRef(null);
   const [inputData, setInputData] = useState({
     id: 0,
-    firstName: "",
-    lastName: "",
     editName: "",
+    editEmail: "",
   });
   const [contactsData, setContactsData] = useState([]);
 
@@ -29,21 +28,33 @@ function ContextProvider({ children }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!inputData.firstName || !inputData.lastName) {
+    if (!inputData.editName) {
       alert("Please Enter A First and Last Name");
       return;
     }
+    const newUser = {
+      name: inputData.editName,
+      email: inputData.editEmail,
+    };
+
+    const options = {
+      method: "POST",
+      body: JSON.stringify(newUser),
+      headers: {
+        "Content-type": "application/json",
+      },
+    };
+    fetch("https://jsonplaceholder.typicode.com/users", options)
+      .then((res) => res.json())
+      .then((post) => {
+        setContactsData((prevContacts) => [...prevContacts, post]);
+        console.log(post);
+      });
     //pushes contact data into contacts array
-    setContactsData((prevContacts) => [...prevContacts, inputData]);
-    //sorts last name by alphabetical order
-    // setContactsData((prevContacts) =>
-    //   prevContacts.sort((a, b) => a.lastName.localeCompare(b.lastName))
-    // );
     setInputData((prevInputData) => ({
       id: prevInputData.id + 1,
-      firstName: "",
-      lastName: "",
       editName: "",
+      editEmail: "",
     }));
   };
 
@@ -55,10 +66,9 @@ function ContextProvider({ children }) {
 
   const contacts = contactsData.map((contact) => (
     <Contact
-      key={contact.lastName}
+      key={contact.name}
       handleChange={handleChange}
-      firstName={contact.firstName}
-      editName={contact.name}
+      name={contact.name}
       email={contact.email}
       id={contact.id}
       removeContact={removeContact}

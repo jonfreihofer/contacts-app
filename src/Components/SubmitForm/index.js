@@ -10,18 +10,18 @@ function SubmitForm({ children }) {
     <StyledForm>
       <form onSubmit={handleSubmit}>
         <StyledInput
-          placeholder="FIRST NAME"
-          name="firstName"
+          placeholder="NAME"
+          name="editName"
           type="text"
-          value={inputData.firstName}
+          value={inputData.editName}
           onChange={handleChange}
         />
         <br />
         <StyledInput
-          placeholder="LAST NAME"
-          name="lastName"
-          type="text"
-          value={inputData.lastName}
+          placeholder="EMAIL"
+          name="editEmail"
+          type="email"
+          value={inputData.editEmail}
           onChange={handleChange}
         />
         <Button>Add Contact</Button>

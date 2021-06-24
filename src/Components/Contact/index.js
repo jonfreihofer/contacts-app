@@ -9,9 +9,11 @@ function Contact({
   firstName,
   lastName,
   editName,
+  name,
   removeContact,
   handleSubmit,
   email,
+  editEmail,
   id,
 }) {
   const [isFavorited, setIsFavorited] = useState(false);
@@ -34,9 +36,8 @@ function Contact({
 
     setInputData((prevInputData) => ({
       id: prevInputData.id,
-      firstName: "",
-      lastName: "",
       editName: "",
+      editEmail: "",
     }));
     // todo: change editName to replace both firstName and lastName values, for purpose of data continuity
     setEdit(false);
@@ -47,7 +48,7 @@ function Contact({
       <div>
         <StyledInput
           type="text"
-          defaultValue={editName ? editName : `${firstName} ${lastName}`}
+          defaultValue={editName ? editName : `${name}`}
           name="editName"
           onChange={handleChange}
           ref={inputRef}
@@ -66,8 +67,8 @@ function Contact({
   const renderData = () => {
     return (
       <div>
-        {editName ? `${editName}` : `${firstName} ${lastName}`} <br />
-        {email && `${email}`}
+        {`${name}`} <br />
+        {`${email}`}
       </div>
     );
   };
@@ -76,9 +77,7 @@ function Contact({
       <PopUp
         showPopUp={showPopUp}
         setShowPopUp={setShowPopUp}
-        firstName={firstName}
-        lastName={lastName}
-        editName={editName}
+        name={name}
         removeContact={removeContact}
         id={id}
       />
