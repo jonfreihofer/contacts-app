@@ -40,9 +40,6 @@ function Contact({
     fetch(`https://jsonplaceholder.typicode.com/users/${id}`, upDateOptions)
       .then((res) => res.json())
       .then((put) => setContactsData((prevContacts) => [...prevContacts, put]));
-    // setContactsData((prevContact) =>
-    //   prevContact.sort((a, b) => a.lastName.localeCompare(b.lastName))
-    // );
 
     setInputData((prevInputData) => ({
       id: prevInputData.id,
@@ -76,10 +73,10 @@ function Contact({
 
   const renderData = () => {
     return (
-      <div>
+      <>
         {`${name}`} <br />
         {`${email}`}
-      </div>
+      </>
     );
   };
   return (
