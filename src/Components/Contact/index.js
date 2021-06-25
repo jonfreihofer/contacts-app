@@ -27,7 +27,6 @@ function Contact({
       id: id,
       name: inputRef.current.value,
       email: email,
-      userId: id + 1,
     };
     const upDateOptions = {
       method: "PUT",
