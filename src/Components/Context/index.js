@@ -33,6 +33,7 @@ function ContextProvider({ children }) {
       return;
     }
     const newUser = {
+      id: inputData.id,
       name: inputData.editName,
       email: inputData.editEmail,
     };
@@ -58,9 +59,9 @@ function ContextProvider({ children }) {
     }));
   };
 
-  const removeContact = (id) => {
+  const removeContact = (name) => {
     setContactsData((prevContact) =>
-      prevContact.filter((contact) => contact.id !== id)
+      prevContact.filter((contact) => contact.name !== name)
     );
   };
 

@@ -13,8 +13,8 @@ function Contact({
   removeContact,
   handleSubmit,
   email,
-  editEmail,
   id,
+  editEmail,
 }) {
   const [isFavorited, setIsFavorited] = useState(false);
   const [showPopUp, setShowPopUp] = useState(false);
@@ -23,13 +23,23 @@ function Contact({
     useContext(Context);
 
   const upDateValue = (id) => {
-    setContactsData((prevContact) =>
-      prevContact.filter((contact) =>
-        contact.id === id
-          ? (contact.editName = inputRef.current.value)
-          : contact
-      )
-    );
+    const upDateUser = {
+      id: id,
+      name: inputRef.current.value,
+      email: email,
+      userId: id + 1,
+    };
+    const upDateOptions = {
+      method: "PUT",
+      body: JSON.stringify(upDateUser),
+      headers: {
+        "Content-type": "application/json",
+      },
+    };
+
+    fetch(`https://jsonplaceholder.typicode.com/users/${id}`, upDateOptions)
+      .then((res) => res.json())
+      .then((put) => setContactsData((prevContacts) => [...prevContacts, put]));
     // setContactsData((prevContact) =>
     //   prevContact.sort((a, b) => a.lastName.localeCompare(b.lastName))
     // );
@@ -49,7 +59,7 @@ function Contact({
         <StyledInput
           type="text"
           defaultValue={editName ? editName : `${name}`}
-          name="editName"
+          name="newName"
           onChange={handleChange}
           ref={inputRef}
         />
