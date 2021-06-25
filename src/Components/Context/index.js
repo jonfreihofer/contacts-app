@@ -49,7 +49,6 @@ function ContextProvider({ children }) {
       .then((res) => res.json())
       .then((post) => {
         setContactsData((prevContacts) => [...prevContacts, post]);
-        console.log(post);
       });
     //pushes contact data into contacts array
     setInputData((prevInputData) => ({

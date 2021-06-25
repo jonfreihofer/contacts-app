@@ -22,7 +22,7 @@ function Contact({
   const { inputRef, setContactsData, setInputData, handleChange } =
     useContext(Context);
 
-  const upDateValue = (id) => {
+  const upDateValue = (id, name) => {
     const upDateUser = {
       id: id,
       name: inputRef.current.value,
@@ -38,14 +38,18 @@ function Contact({
 
     fetch(`https://jsonplaceholder.typicode.com/users/${id}`, upDateOptions)
       .then((res) => res.json())
-      .then((put) => setContactsData((prevContacts) => [...prevContacts, put]));
+      .then((put) => {
+        setContactsData((prevContacts) => [...prevContacts, put]);
+        setContactsData((prevContacts) =>
+          prevContacts.filter((contact) => contact.name !== name)
+        );
+      });
 
     setInputData((prevInputData) => ({
       id: prevInputData.id,
       editName: "",
       editEmail: "",
     }));
-    // todo: change editName to replace both firstName and lastName values, for purpose of data continuity
     setEdit(false);
   };
 
@@ -59,7 +63,7 @@ function Contact({
           onChange={handleChange}
           ref={inputRef}
         />
-        <StyledButton className="edit" onClick={() => upDateValue(id)}>
+        <StyledButton className="edit" onClick={() => upDateValue(id, name)}>
           Save
         </StyledButton>
       </div>
