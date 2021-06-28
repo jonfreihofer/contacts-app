@@ -43,6 +43,7 @@ function Contact({
         setContactsData((prevContacts) =>
           prevContacts.filter((contact) => contact.name !== name)
         );
+        setContactsData((prevContacts) => prevContacts.sort());
       });
 
     setInputData((prevInputData) => ({

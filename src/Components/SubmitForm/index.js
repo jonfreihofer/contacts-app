@@ -16,7 +16,6 @@ function SubmitForm({ children }) {
           value={inputData.editName}
           onChange={handleChange}
         />
-        <br />
         <StyledInput
           placeholder="EMAIL"
           name="editEmail"

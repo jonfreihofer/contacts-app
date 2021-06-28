@@ -1,10 +1,10 @@
 import styled from "styled-components";
 
-const StyledTitleContainer = styled.div`
+const StyledContactsContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
-  margin: 0 auto;
   justify-content: center;
+  margin: 0 auto;
   color: white;
   @media (max-width: 600px) {
     flex-wrap: none;
@@ -12,4 +12,4 @@ const StyledTitleContainer = styled.div`
   }
 `;
 
-export default StyledTitleContainer;
+export default StyledContactsContainer;
