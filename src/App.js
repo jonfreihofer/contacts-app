@@ -8,11 +8,9 @@ function App() {
   const { contacts } = useContext(Context);
   return (
     <>
-      <TitleContainer>
-        <h1>My Contacts</h1>
-        <SubmitForm />
-        {contacts}
-      </TitleContainer>
+      <h1>My Contacts</h1>
+      <SubmitForm />
+      <TitleContainer>{contacts}</TitleContainer>
     </>
   );
 }

@@ -9,7 +9,7 @@ const StyledContact = styled.div`
   color: white;
   background-color: #23a6d5;
   width: 35%;
-  min-width: 65px;
+  min-width: 300px;
   margin: 0.35rem;
   padding: 0.75rem;
   border-radius: 3%;
