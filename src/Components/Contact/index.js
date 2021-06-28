@@ -13,8 +13,8 @@ function Contact({
   removeContact,
   handleSubmit,
   email,
-  editEmail,
   id,
+  editEmail,
 }) {
   const [isFavorited, setIsFavorited] = useState(false);
   const [showPopUp, setShowPopUp] = useState(false);
@@ -22,24 +22,35 @@ function Contact({
   const { inputRef, setContactsData, setInputData, handleChange } =
     useContext(Context);
 
-  const upDateValue = (id) => {
-    setContactsData((prevContact) =>
-      prevContact.filter((contact) =>
-        contact.id === id
-          ? (contact.editName = inputRef.current.value)
-          : contact
-      )
-    );
-    // setContactsData((prevContact) =>
-    //   prevContact.sort((a, b) => a.lastName.localeCompare(b.lastName))
-    // );
+  const upDateValue = (id, name) => {
+    const upDateUser = {
+      id: id,
+      name: inputRef.current.value,
+      email: email,
+    };
+    const upDateOptions = {
+      method: "PUT",
+      body: JSON.stringify(upDateUser),
+      headers: {
+        "Content-type": "application/json",
+      },
+    };
+
+    fetch(`https://jsonplaceholder.typicode.com/users/${id}`, upDateOptions)
+      .then((res) => res.json())
+      .then((put) => {
+        setContactsData((prevContacts) => [...prevContacts, put]);
+        setContactsData((prevContacts) =>
+          prevContacts.filter((contact) => contact.name !== name)
+        );
+        setContactsData((prevContacts) => prevContacts.sort());
+      });
 
     setInputData((prevInputData) => ({
       id: prevInputData.id,
       editName: "",
       editEmail: "",
     }));
-    // todo: change editName to replace both firstName and lastName values, for purpose of data continuity
     setEdit(false);
   };
 
@@ -49,11 +60,11 @@ function Contact({
         <StyledInput
           type="text"
           defaultValue={editName ? editName : `${name}`}
-          name="editName"
+          name="newName"
           onChange={handleChange}
           ref={inputRef}
         />
-        <StyledButton className="edit" onClick={() => upDateValue(id)}>
+        <StyledButton className="edit" onClick={() => upDateValue(id, name)}>
           Save
         </StyledButton>
       </div>
@@ -66,10 +77,10 @@ function Contact({
 
   const renderData = () => {
     return (
-      <div>
+      <>
         {`${name}`} <br />
         {`${email}`}
-      </div>
+      </>
     );
   };
   return (
