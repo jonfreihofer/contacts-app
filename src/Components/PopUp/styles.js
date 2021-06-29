@@ -10,7 +10,7 @@ const StyledPopUp = styled.div`
   top: 50%;
   left: 50%;
   margin-top: -50px;
-  margin-left: -100px;
+  margin-left: -30px;
   transform: translate(-50%, -50%);
   -webkit-box-shadow: 3px 3px 5px 6px #ccc;
   -moz-box-shadow: 3px 3px 5px 6px #ccc;
