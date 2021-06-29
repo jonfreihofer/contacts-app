@@ -7,6 +7,7 @@ const StyledPopUp = styled.div`
   background: #23d5ab;
   position: fixed;
   z-index: 100;
+  border-radius: 16px;
   top: 50%;
   left: 50%;
   margin-top: -50px;
@@ -27,14 +28,16 @@ const StyledPopUp = styled.div`
 
   .no {
     margin: 20px;
-    width: 40px;
+    width: 70px;
     position: absolute;
+    border-radius: 16px;
     bottom: 0px;
     right: 0px;
   }
   .yes {
     margin: 20px;
-    width: 40px;
+    width: 70px;
+    border-radius: 16px;
     position: absolute;
     bottom: 0px;
     left: 0px;
@@ -45,6 +48,7 @@ const StyledPopUp = styled.div`
     height: 40px;
     background-color: purple;
     font-weight: bolder;
+    width: 30px;
     text-transform: uppercase;
     color: white;
     border: none;

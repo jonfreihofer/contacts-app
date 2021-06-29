@@ -12,7 +12,7 @@ const StyledContact = styled.div`
   min-width: 300px;
   margin: 0.35rem;
   padding: 0.75rem;
-  border-radius: 3%;
+  border-radius: 16px;
   opacity: 0.8;
   -webkit-box-shadow: 3px 3px 5px 6px #ccc;
   -moz-box-shadow: 3px 3px 5px 6px #ccc;
