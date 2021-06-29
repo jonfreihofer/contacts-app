@@ -6,6 +6,7 @@ export const StyledForm = styled.div`
   justfiy-content: center;
   padding-bottom: 30px;
   margin: 10 12px;
+  margin-bottom: 15px;
   text-align: center;
   align-content: center;
 `;
@@ -18,7 +19,7 @@ export const StyledInput = styled.input`
   border-radius: 3%;
   color: white;
   font-weight: bolder;
-  margin-bottom: 7px;
+  margin-bottom: 12px;
   margin-right: 8px;
   opacity: 0.9;
   -webkit-box-shadow: 1px 1px 2px 3px #ccc;

@@ -19,6 +19,7 @@ function Contact({
   const [isFavorited, setIsFavorited] = useState(false);
   const [showPopUp, setShowPopUp] = useState(false);
   const [edit, setEdit] = useState(false);
+  const [hovered, setHovered] = useState(false);
   const { inputRef, setContactsData, setInputData, handleChange } =
     useContext(Context);
 
@@ -83,6 +84,30 @@ function Contact({
       </>
     );
   };
+
+  const displayHeart = () => {
+    if (isFavorited) {
+      return (
+        <img
+          className="favorite-star"
+          src={"../images/filledstar.png"}
+          alt="star icon"
+          onClick={() => setIsFavorited(!isFavorited)}
+        />
+      );
+    }
+    if (hovered) {
+      return (
+        <img
+          className="favorite-star"
+          src={"../images/star.png"}
+          alt="star icon"
+          onClick={() => setIsFavorited(!isFavorited)}
+        />
+      );
+    }
+  };
+
   return (
     <>
       <PopUp
@@ -92,7 +117,10 @@ function Contact({
         removeContact={removeContact}
         id={id}
       />
-      <StyledContact>
+      <StyledContact
+        onMouseEnter={() => setHovered(true)}
+        onMouseLeave={() => setHovered(false)}
+      >
         {edit ? (
           renderInput()
         ) : (
@@ -104,14 +132,7 @@ function Contact({
         >
           Remove
         </StyledButton>
-
-        <img
-          className="favorite-star"
-          src={isFavorited ? "../images/filledstar.png" : "../images/star.png"}
-          alt="star icon"
-          onClick={() => setIsFavorited(!isFavorited)}
-          //todo: change to svg, turnery should be classname instead of directory
-        />
+        {displayHeart()}
       </StyledContact>
     </>
   );

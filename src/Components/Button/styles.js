@@ -4,7 +4,7 @@ const StyledButton = styled.button`
   display: block;
   padding: 10px 15px;
   border: unset;
-  border-radius: 5%;
+  border-radius: 16px;
   font-weight: bolder;
   min-width: 75px;
   max-width: 35%;

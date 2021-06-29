@@ -11,8 +11,9 @@ function App() {
     <>
       <TitleSection>
         <h1>My Contacts</h1>
+        <SubmitForm />
       </TitleSection>
-      <SubmitForm />
+
       <ContactsSection>{contacts}</ContactsSection>
     </>
   );
