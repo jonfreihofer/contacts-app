@@ -44,7 +44,13 @@ function Contact({
         setContactsData((prevContacts) =>
           prevContacts.filter((contact) => contact.name !== name)
         );
-        setContactsData((prevContacts) => prevContacts.sort());
+        setContactsData((prevContacts) =>
+          prevContacts.sort((a, b) => {
+            let textA = a.name.toUpperCase();
+            let textB = a.name.toUpperCase();
+            return textA < textB ? -1 : textA > textB ? 1 : 0;
+          })
+        );
       });
 
     setInputData((prevInputData) => ({
