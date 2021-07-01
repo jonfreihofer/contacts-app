@@ -36,6 +36,11 @@ function Contact({
         "Content-type": "application/json",
       },
     };
+    setContactsData((prevContacts) =>
+      prevContacts.sort((a, b) => {
+        return a.name.localeCompare(b.name);
+      })
+    );
 
     fetch(`https://jsonplaceholder.typicode.com/users/${id}`, upDateOptions)
       .then((res) => res.json())
@@ -44,7 +49,6 @@ function Contact({
         setContactsData((prevContacts) =>
           prevContacts.filter((contact) => contact.name !== name)
         );
-        setContactsData((prevContacts) => prevContacts.sort());
       });
 
     setInputData((prevInputData) => ({
@@ -124,7 +128,9 @@ function Contact({
         {edit ? (
           renderInput()
         ) : (
-          <h3 onDoubleClick={changeEditMode}>{renderData()}</h3>
+          <h3 style={{ cursor: "pointer" }} onDoubleClick={changeEditMode}>
+            {renderData()}
+          </h3>
         )}
         <StyledButton
           onClick={() => setShowPopUp(!showPopUp)}

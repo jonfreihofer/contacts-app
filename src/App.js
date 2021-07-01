@@ -7,14 +7,24 @@ import TitleSection from "./Containers/TitleSection";
 
 function App() {
   const { contacts } = useContext(Context);
+  const renderLoading = () => {
+    if (!contacts) {
+      console.log("loading");
+      return <div>Loading Contacts...</div>;
+    }
+    if (contacts) return null;
+  };
+
   return (
     <>
       <TitleSection>
         <h1>My Contacts</h1>
         <SubmitForm />
       </TitleSection>
-
-      <ContactsSection>{contacts}</ContactsSection>
+      <ContactsSection>
+        {renderLoading()}
+        {contacts}
+      </ContactsSection>
     </>
   );
 }
