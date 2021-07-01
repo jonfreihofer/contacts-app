@@ -36,6 +36,11 @@ function Contact({
         "Content-type": "application/json",
       },
     };
+    setContactsData((prevContacts) =>
+      prevContacts.sort((a, b) => {
+        return a.name.localeCompare(b.name);
+      })
+    );
 
     fetch(`https://jsonplaceholder.typicode.com/users/${id}`, upDateOptions)
       .then((res) => res.json())
@@ -43,13 +48,6 @@ function Contact({
         setContactsData((prevContacts) => [...prevContacts, put]);
         setContactsData((prevContacts) =>
           prevContacts.filter((contact) => contact.name !== name)
-        );
-        setContactsData((prevContacts) =>
-          prevContacts.sort((a, b) => {
-            let textA = a.name.toUpperCase();
-            let textB = a.name.toUpperCase();
-            return textA < textB ? -1 : textA > textB ? 1 : 0;
-          })
         );
       });
 
