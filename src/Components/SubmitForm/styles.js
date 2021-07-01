@@ -3,7 +3,6 @@ import styled from "styled-components";
 export const StyledForm = styled.div`
   display: flex;
   flex-direction: column;
-  justfiy-content: center;
   padding-bottom: 30px;
   margin: 10 12px;
   margin-bottom: 15px;
