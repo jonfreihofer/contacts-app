@@ -8,11 +8,7 @@ import TitleSection from "./Containers/TitleSection";
 function App() {
   const { contacts } = useContext(Context);
   const renderLoading = () => {
-    if (!contacts) {
-      console.log("loading");
-      return <div>Loading Contacts...</div>;
-    }
-    if (contacts) return null;
+    return <div>Loading Contacts...</div>;
   };
 
   return (
@@ -22,7 +18,7 @@ function App() {
         <SubmitForm />
       </TitleSection>
       <ContactsSection>
-        {renderLoading()}
+        {!contacts && renderLoading()}
         {contacts}
       </ContactsSection>
     </>

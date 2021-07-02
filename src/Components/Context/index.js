@@ -11,6 +11,7 @@ function ContextProvider({ children }) {
     editEmail: "",
   });
   const [contactsData, setContactsData] = useState([]);
+  const [favorites, setFavorites] = useState([]);
 
   useEffect(() => {
     const getUsers = async () => {
@@ -92,6 +93,8 @@ function ContextProvider({ children }) {
         removeContact,
         contacts,
         inputRef,
+        favorites,
+        setFavorites,
       }}
     >
       {children}
