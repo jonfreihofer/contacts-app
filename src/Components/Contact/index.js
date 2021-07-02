@@ -103,7 +103,6 @@ function Contact({
           alt="star icon"
           onClick={() => {
             setIsFavorited(!isFavorited);
-            setFavorites((prevFavorites) => [...prevFavorites, id]);
           }}
         />
       );
@@ -114,7 +113,10 @@ function Contact({
           className="favorite-star"
           src={"../images/star.png"}
           alt="star icon"
-          onClick={() => setIsFavorited(!isFavorited)}
+          onClick={() => {
+            setIsFavorited(!isFavorited);
+            setFavorites((prevFavorites) => [...prevFavorites, id]);
+          }}
         />
       );
     }
@@ -146,7 +148,7 @@ function Contact({
         >
           Remove
         </StyledButton>
-        {displayHeart()}
+        {displayHeart(id)}
       </StyledContact>
     </>
   );
