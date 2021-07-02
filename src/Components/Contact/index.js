@@ -20,8 +20,13 @@ function Contact({
   const [showPopUp, setShowPopUp] = useState(false);
   const [edit, setEdit] = useState(false);
   const [hovered, setHovered] = useState(false);
-  const { inputRef, setContactsData, setInputData, handleChange } =
-    useContext(Context);
+  const {
+    inputRef,
+    setContactsData,
+    setInputData,
+    handleChange,
+    setFavorites,
+  } = useContext(Context);
 
   const upDateValue = (id, name) => {
     const upDateUser = {
@@ -89,14 +94,17 @@ function Contact({
     );
   };
 
-  const displayHeart = () => {
+  const displayHeart = (id) => {
     if (isFavorited) {
       return (
         <img
           className="favorite-star"
           src={"../images/filledstar.png"}
           alt="star icon"
-          onClick={() => setIsFavorited(!isFavorited)}
+          onClick={() => {
+            setIsFavorited(!isFavorited);
+            setFavorites((prevFavorites) => [...prevFavorites, id]);
+          }}
         />
       );
     }
