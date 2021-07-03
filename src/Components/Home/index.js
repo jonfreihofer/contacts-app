@@ -1,11 +1,10 @@
 import React, { useContext } from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import { Context } from "./Components/Context";
+import { Context } from "../Context";
 import SubmitForm from "./Components/SubmitForm/index";
 import ContactsSection from "./Containers/ContactsSection";
 import TitleSection from "./Containers/TitleSection";
 
-function App() {
+export default function Home() {
   const { contacts } = useContext(Context);
   const renderLoading = () => {
     return <div>Loading Contacts...</div>;
@@ -20,14 +19,6 @@ function App() {
         {!contacts && renderLoading()}
         {contacts}
       </ContactsSection>
-      <FavoritesPage />
     </>
   );
 }
-
-function FavoritesPage() {
-  const { favorites } = useContext(Context);
-  return <div>{favorites}</div>;
-}
-
-export default App;
