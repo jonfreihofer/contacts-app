@@ -67,3 +67,15 @@ body {
   bottom: 0px;
   right: 0px;
 }
+
+.favoritesLink {
+  margin: 40px;
+  text-decoration: none;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  font-size: 1.5em;
+  font-weight: bolder;
+  letter-spacing: 1px;
+  color: white;
+}
