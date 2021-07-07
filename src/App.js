@@ -9,9 +9,6 @@ import TitleSection from "./Containers/TitleSection";
 
 function App() {
   const { contacts } = useContext(Context);
-  const renderLoading = () => {
-    return <div>Loading Contacts...</div>;
-  };
 
   return (
     <>
@@ -23,10 +20,7 @@ function App() {
           <h1>My Contacts</h1>
           <SubmitForm />
         </TitleSection>
-        <ContactsSection>
-          {!contacts && renderLoading()}
-          {contacts}
-        </ContactsSection>
+        <ContactsSection>{contacts}</ContactsSection>
         <Switch>
           <Route path="/favorites">
             <FavoritesPage />

@@ -6,8 +6,6 @@ import PopUp from "../PopUp";
 import { Context } from "../Context";
 
 function Contact({
-  firstName,
-  lastName,
   editName,
   name,
   removeContact,
@@ -15,6 +13,7 @@ function Contact({
   email,
   id,
   editEmail,
+  children,
 }) {
   const [isFavorited, setIsFavorited] = useState(false);
   const [showPopUp, setShowPopUp] = useState(false);
@@ -41,11 +40,6 @@ function Contact({
         "Content-type": "application/json",
       },
     };
-    setContactsData((prevContacts) =>
-      prevContacts.sort((a, b) => {
-        return a.name.localeCompare(b.name);
-      })
-    );
 
     fetch(`https://jsonplaceholder.typicode.com/users/${id}`, upDateOptions)
       .then((res) => res.json())
@@ -93,7 +87,7 @@ function Contact({
       </>
     );
   };
-
+  //displays heart icon on over
   const displayHeart = (id) => {
     if (isFavorited) {
       return (
