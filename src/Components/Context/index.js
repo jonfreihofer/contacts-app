@@ -12,6 +12,7 @@ function ContextProvider({ children }) {
   });
   const [contactsData, setContactsData] = useState([]);
   const [favorites, setFavorites] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const getUsers = async () => {
@@ -21,15 +22,10 @@ function ContextProvider({ children }) {
         return a.name.localeCompare(b.name);
       });
       setContactsData(sortedData);
+      setIsLoading(false);
     };
     getUsers();
   }, []);
-
-  const sortByFirstLetter = (array) => {
-    return array.sort((a, b) => {
-      return a.name.localeCompare(b.name);
-    });
-  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -101,7 +97,7 @@ function ContextProvider({ children }) {
         inputRef,
         favorites,
         setFavorites,
-        sortByFirstLetter,
+        isLoading,
       }}
     >
       {children}
