@@ -12,6 +12,7 @@ function ContextProvider({ children }) {
   });
   const [contactsData, setContactsData] = useState([]);
   const [favorites, setFavorites] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const getUsers = async () => {
@@ -21,6 +22,7 @@ function ContextProvider({ children }) {
         return a.name.localeCompare(b.name);
       });
       setContactsData(sortedData);
+      setIsLoading(false);
     };
     getUsers();
   }, []);
@@ -72,7 +74,7 @@ function ContextProvider({ children }) {
     <Contact
       key={contact.name}
       handleChange={handleChange}
-      name={contact.name}
+      name={contact.name ? contact.name : contact.editName}
       email={contact.email}
       id={contact.id}
       removeContact={removeContact}
@@ -95,6 +97,7 @@ function ContextProvider({ children }) {
         inputRef,
         favorites,
         setFavorites,
+        isLoading,
       }}
     >
       {children}

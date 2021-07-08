@@ -8,10 +8,7 @@ import ContactsSection from "./Containers/ContactsSection";
 import TitleSection from "./Containers/TitleSection";
 
 function App() {
-  const { contacts } = useContext(Context);
-  const renderLoading = () => {
-    return <div>Loading Contacts...</div>;
-  };
+  const { contacts, isLoading } = useContext(Context);
 
   return (
     <>
@@ -24,7 +21,7 @@ function App() {
           <SubmitForm />
         </TitleSection>
         <ContactsSection>
-          {!contacts && renderLoading()}
+          {isLoading && <h1>Loading Contacts...</h1>}
           {contacts}
         </ContactsSection>
         <Switch>
