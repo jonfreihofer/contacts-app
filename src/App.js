@@ -8,7 +8,7 @@ import ContactsSection from "./Containers/ContactsSection";
 import TitleSection from "./Containers/TitleSection";
 
 function App() {
-  const { contacts } = useContext(Context);
+  const { contacts, isLoading } = useContext(Context);
 
   return (
     <>
@@ -20,7 +20,10 @@ function App() {
           <h1>My Contacts</h1>
           <SubmitForm />
         </TitleSection>
-        <ContactsSection>{contacts}</ContactsSection>
+        <ContactsSection>
+          {isLoading && <h1>Loading Contacts...</h1>}
+          {contacts}
+        </ContactsSection>
         <Switch>
           <Route path="/favorites">
             <FavoritesPage />
