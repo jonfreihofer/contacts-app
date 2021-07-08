@@ -25,6 +25,8 @@ function Contact({
     setInputData,
     handleChange,
     setFavorites,
+    contacts,
+    sortByFirstLetter,
   } = useContext(Context);
 
   const upDateValue = (id, name) => {
@@ -44,7 +46,11 @@ function Contact({
     fetch(`https://jsonplaceholder.typicode.com/users/${id}`, upDateOptions)
       .then((res) => res.json())
       .then((put) => {
-        setContactsData((prevContacts) => [...prevContacts, put]);
+        setContactsData((prevContacts) =>
+          [...prevContacts, put].sort((a, b) => {
+            return a.name.localeCompare(b.name);
+          })
+        );
         setContactsData((prevContacts) =>
           prevContacts.filter((contact) => contact.name !== name)
         );
@@ -68,7 +74,13 @@ function Contact({
           onChange={handleChange}
           ref={inputRef}
         />
-        <StyledButton className="edit" onClick={() => upDateValue(id, name)}>
+        <StyledButton
+          className="edit"
+          onClick={() => {
+            upDateValue(id, name);
+            sortByFirstLetter(contacts);
+          }}
+        >
           Save
         </StyledButton>
       </div>
@@ -87,6 +99,11 @@ function Contact({
       </>
     );
   };
+  const removeFavorite = (id) => {
+    setFavorites((prevFavorites) =>
+      prevFavorites.filter((favorite) => favorite.id !== id)
+    );
+  };
   //displays heart icon on over
   const displayHeart = (id) => {
     if (isFavorited) {
@@ -94,9 +111,10 @@ function Contact({
         <img
           className="favorite-star"
           src={"../images/filledstar.png"}
-          alt="star icon"
+          alt="yellow star icon"
           onClick={() => {
             setIsFavorited(!isFavorited);
+            removeFavorite(id);
           }}
         />
       );

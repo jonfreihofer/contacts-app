@@ -25,6 +25,12 @@ function ContextProvider({ children }) {
     getUsers();
   }, []);
 
+  const sortByFirstLetter = (array) => {
+    return array.sort((a, b) => {
+      return a.name.localeCompare(b.name);
+    });
+  };
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setInputData((prevInputData) => ({ ...prevInputData, [name]: value }));
@@ -72,7 +78,7 @@ function ContextProvider({ children }) {
     <Contact
       key={contact.name}
       handleChange={handleChange}
-      name={contact.name}
+      name={contact.name ? contact.name : contact.editName}
       email={contact.email}
       id={contact.id}
       removeContact={removeContact}
@@ -95,6 +101,7 @@ function ContextProvider({ children }) {
         inputRef,
         favorites,
         setFavorites,
+        sortByFirstLetter,
       }}
     >
       {children}
