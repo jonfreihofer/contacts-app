@@ -79,3 +79,11 @@ body {
   letter-spacing: 1px;
   color: white;
 }
+
+@media (max-width: 600px) {
+  .favoritesLink {
+    top: -40px;
+    right: 20px;
+    font-size: 1em;
+  }
+}
