@@ -25,8 +25,6 @@ function Contact({
     setInputData,
     handleChange,
     setFavorites,
-    contacts,
-    sortByFirstLetter,
   } = useContext(Context);
 
   const upDateValue = (id, name) => {
@@ -78,7 +76,6 @@ function Contact({
           className="edit"
           onClick={() => {
             upDateValue(id, name);
-            sortByFirstLetter(contacts);
           }}
         >
           Save
