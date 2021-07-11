@@ -1,7 +1,6 @@
 import "./App.css";
 import React, { useContext } from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-
 import { Context } from "./Components/Context";
 import SubmitForm from "./Components/SubmitForm/index";
 import ContactsSection from "./Containers/ContactsSection";
