@@ -51,13 +51,12 @@ function ContextProvider({ children }) {
         "Content-type": "application/json",
       },
     };
+
     fetch("https://jsonplaceholder.typicode.com/users", options)
       .then((res) => res.json())
       .then((post) => {
         setContactsData((prevContacts) =>
-          [...prevContacts, post].sort((a, b) => {
-            return a.name.localeCompare(b.name);
-          })
+          [...prevContacts, post].sort((a, b) => a.name.localeCompare(b.name))
         );
       });
     //pushes contact data into contacts array
