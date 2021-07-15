@@ -5,6 +5,7 @@ import { Context } from "./Components/Context";
 import SubmitForm from "./Components/SubmitForm/index";
 import ContactsSection from "./Containers/ContactsSection";
 import TitleSection from "./Containers/TitleSection";
+import FavoritesPage from "./Pages/Favorites";
 
 function App() {
   const { contacts, isLoading } = useContext(Context);
@@ -31,11 +32,6 @@ function App() {
       </Router>
     </>
   );
-
-  function FavoritesPage() {
-    const { favorites } = useContext(Context);
-    return <div>{favorites}</div>;
-  }
 }
 
 export default App;
