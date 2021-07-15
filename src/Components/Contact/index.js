@@ -19,13 +19,8 @@ function Contact({
   const [showPopUp, setShowPopUp] = useState(false);
   const [edit, setEdit] = useState(false);
   const [hovered, setHovered] = useState(false);
-  const {
-    inputRef,
-    setContactsData,
-    setInputData,
-    handleChange,
-    setFavorites,
-  } = useContext(Context);
+  const { inputRef, setContactsData, handleChange, setFavorites } =
+    useContext(Context);
 
   const upDateValue = (id, name) => {
     const upDateUser = {
@@ -44,21 +39,14 @@ function Contact({
     fetch(`https://jsonplaceholder.typicode.com/users/${id}`, upDateOptions)
       .then((res) => res.json())
       .then((put) => {
+        console.log(put);
         setContactsData((prevContacts) =>
-          [...prevContacts, put].sort((a, b) => {
-            return a.name.localeCompare(b.name);
-          })
-        );
-        setContactsData((prevContacts) =>
-          prevContacts.filter((contact) => contact.name !== name)
+          [...prevContacts, put]
+            .sort((a, b) => a.name.localeCompare(b.name))
+            .filter((contact) => contact.name !== name)
         );
       });
 
-    setInputData((prevInputData) => ({
-      id: prevInputData.id,
-      editName: "",
-      editEmail: "",
-    }));
     setEdit(false);
   };
 
@@ -91,8 +79,8 @@ function Contact({
   const renderData = () => {
     return (
       <>
-        {`${name}`} <br />
-        {`${email}`}
+        {name} <br />
+        {email}
       </>
     );
   };
