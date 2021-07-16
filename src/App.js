@@ -12,18 +12,23 @@ function App() {
   return (
     <>
       <Router>
+        <Link className="contacts" to="/">
+          Contacts
+        </Link>
         <Link className="favoritesLink" to="/favorites">
           Favorites
         </Link>
-        <TitleSection>
-          <h1>My Contacts</h1>
-          <SubmitForm />
-        </TitleSection>
-        <ContactsSection>
-          {isLoading && <h1>Loading Contacts...</h1>}
-          {contacts}
-        </ContactsSection>
         <Switch>
+          <Route exact-path="/">
+            <TitleSection>
+              <h1>My Contacts</h1>
+              <SubmitForm />
+            </TitleSection>
+            <ContactsSection>
+              {isLoading && <h1>Loading Contacts...</h1>}
+              {contacts}
+            </ContactsSection>
+          </Route>
           <Route path="/favorites">
             <FavoritesPage />
           </Route>
