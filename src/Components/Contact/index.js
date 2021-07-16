@@ -39,7 +39,6 @@ function Contact({
     fetch(`https://jsonplaceholder.typicode.com/users/${id}`, upDateOptions)
       .then((res) => res.json())
       .then((put) => {
-        console.log(put);
         setContactsData((prevContacts) =>
           [...prevContacts, put]
             .sort((a, b) => a.name.localeCompare(b.name))

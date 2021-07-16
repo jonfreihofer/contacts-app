@@ -5,7 +5,6 @@ import { Context } from "./Components/Context";
 import SubmitForm from "./Components/SubmitForm/index";
 import ContactsSection from "./Containers/ContactsSection";
 import TitleSection from "./Containers/TitleSection";
-import FavoritesPage from "./Pages/Favorites";
 
 function App() {
   const { contacts, isLoading } = useContext(Context);
@@ -13,18 +12,23 @@ function App() {
   return (
     <>
       <Router>
+        <Link className="contacts" to="/">
+          Contacts
+        </Link>
         <Link className="favoritesLink" to="/favorites">
           Favorites
         </Link>
-        <TitleSection>
-          <h1>My Contacts</h1>
-          <SubmitForm />
-        </TitleSection>
-        <ContactsSection>
-          {isLoading && <h1>Loading Contacts...</h1>}
-          {contacts}
-        </ContactsSection>
         <Switch>
+          <Route exact-path="/">
+            <TitleSection>
+              <h1>My Contacts</h1>
+              <SubmitForm />
+            </TitleSection>
+            <ContactsSection>
+              {isLoading && <h1>Loading Contacts...</h1>}
+              {contacts}
+            </ContactsSection>
+          </Route>
           <Route path="/favorites">
             <FavoritesPage />
           </Route>
@@ -32,6 +36,11 @@ function App() {
       </Router>
     </>
   );
+
+  function FavoritesPage() {
+    const { favorites } = useContext(Context);
+    return <div>{favorites}</div>;
+  }
 }
 
 export default App;

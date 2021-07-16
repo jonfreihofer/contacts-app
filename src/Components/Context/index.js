@@ -4,6 +4,7 @@ import Contact from "../Contact";
 const Context = React.createContext();
 
 function ContextProvider({ children }) {
+  //todo: refactor colors as vars
   const inputRef = useRef(null);
   const [inputData, setInputData] = useState({
     id: 0,
@@ -69,7 +70,7 @@ function ContextProvider({ children }) {
 
   const removeContact = (name) => {
     setContactsData((prevContact) =>
-      prevContact.filter((contact) => contact.name !== name)
+      prevContact.filter((data) => data.name !== name)
     );
   };
 
