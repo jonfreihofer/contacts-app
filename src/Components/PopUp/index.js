@@ -18,7 +18,7 @@ function PopUp({
         <button className="no" onClick={() => setShowPopUp(!showPopUp)}>
           No
         </button>
-        <button className="yes" onClick={() => removeContact(name)}>
+        <button className="yes" onClick={() => removeContact(name, id)}>
           Yes
         </button>
       </StyledPopUp>

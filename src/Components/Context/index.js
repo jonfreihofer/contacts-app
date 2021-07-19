@@ -68,7 +68,10 @@ function ContextProvider({ children }) {
     }));
   };
 
-  const removeContact = (name) => {
+  const removeContact = (name, id) => {
+    fetch(`https://jsonplaceholder.typicode.com/users/${id}`, {
+      method: "DELETE",
+    });
     setContactsData((prevContact) =>
       prevContact.filter((data) => data.name !== name)
     );
