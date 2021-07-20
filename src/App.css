@@ -98,4 +98,9 @@ body {
     right: 20px;
     font-size: 1em;
   }
+  .contacts {
+    top: -40px;
+    left: 20px;
+    font-size: 1em;
+  }
 }
