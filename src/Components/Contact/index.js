@@ -54,7 +54,7 @@ function Contact({
       <div>
         <StyledInput
           type="text"
-          defaultValue={editName ? editName : `${name}`}
+          defaultValue={`${name}`}
           name="newName"
           onChange={handleChange}
           ref={inputRef}
@@ -88,7 +88,7 @@ function Contact({
       prevFavorites.filter((favorite) => favorite.id !== id)
     );
   };
-  //displays heart icon on over
+  //displays heart icon on mouseOver
   const displayHeart = (id) => {
     if (isFavorited) {
       return (
